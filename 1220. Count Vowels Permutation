@@ -1,0 +1,17 @@
+class Solution {
+public:
+    long base = 1000000007;
+    int countVowelPermutation(int n) {
+        long a=1,e=1,i=1,o=1,u=1;
+        for(int j=1;j<n;j++){
+            // tempX is number of words that accepts X to be inserted as last letter 
+            long tempa = ((e+i)%base+u)%base;
+            long tempe = (a+i)%base;
+            long tempi = (e+o)%base;
+            long tempo = i;
+            long tempu = (i+o)%base;
+            a=tempa; e=tempe; i=tempi; o=tempo; u=tempu;
+        }
+        return ((((a+e)%base+i)%base+o)%base+u)%base;
+    }
+};
